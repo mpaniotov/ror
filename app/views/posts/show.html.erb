@@ -1,6 +1,9 @@
+<%= render 'user' %>
 
 <%= form_for @post do |f| %>
 
+
+    <h4>autor: <%= "#{User.find(@post.user_id).email}: " %></h4>
     <p>
       <h2><%= f.label :title %><br></h2>
       <%= f.text_field  :title, :readonly => true %>
@@ -14,11 +17,11 @@
 
 <% end %>
 
-<h2>Comments</h2>
+<h2>Comments:</h2>
 <% @post.comments.each do |comment| %>
     <p>
       <strong>Commenter:</strong>
-      <%= comment.commenter %>
+      <%= "#{User.find(comment.user_id).email}: " %>
     &nbsp;
       <strong>Comment:</strong>
       <%= comment.body %>
@@ -27,7 +30,7 @@
 <% end %>
 
 
-<br><h3>Add a comment:</h3>
+<h3>Add a comment:</h3>
 <%= render 'comments/form' %>
 
 

@@ -26,4 +26,11 @@ Blog1::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-end
+
+  #Finally, you need to set up default url options for the mailer in each environment.
+  # Here is the configuration for "config/environments/development.rb":
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
+ end
