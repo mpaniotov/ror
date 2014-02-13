@@ -1,14 +1,19 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
-    @comment[:user_id]=current_user.id
+
+    @post = current_user.posts.find(params[:post_id])
+
+    @comment = Comment.create(comment_params.merge(:post => @post))
     @comment.save
     redirect_to post_path(@post)
+
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
+    @post = current_user.posts.find(params[:post_id])
+
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to post_path(@post)

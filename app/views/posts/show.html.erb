@@ -21,7 +21,7 @@
 <% @post.comments.each do |comment| %>
     <p>
       <strong>Commenter:</strong>
-      <%= "#{User.find(comment.user_id).email}: " %>
+      <%= "#{User.find(@post.user_id).email}: " %>
     &nbsp;
       <strong>Comment:</strong>
       <%= comment.body %>

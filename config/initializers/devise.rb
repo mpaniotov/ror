@@ -1,10 +1,20 @@
+
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+require 'omniauth-facebook'
+require 'omniauth-vkontakte'
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   config.secret_key = 'e996570f02be804f0c90a1f934a48eb113fe2807d7869bb59fcc022b8e024742f625060544f3ca421086fff1ba6e5e4ae1e04e0fcdc800f68981966155eafc62'
+
+  config.omniauth :vkontakte, '4183665', 'Z7BB07vtz2LJy7gUQGui'
+  config.omniauth :facebook, '456182611149622', '25285445cf41979a9a917dce45e50171'
+
+
+
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
